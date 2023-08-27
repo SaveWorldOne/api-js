@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setApiUrl = exports.REST = void 0;
 /**
  * api/src/index.ts
  *
@@ -7,5 +10,11 @@
  * Created At: 27.08.2023
  *
  */
-console.log("hello-world");
+const RESTEnv_1 = require("./RESTEnv");
+var REST_1 = require("./REST");
+Object.defineProperty(exports, "REST", { enumerable: true, get: function () { return REST_1.REST; } });
+function setApiUrl(url) {
+    RESTEnv_1.RESTEnv.API_URL = url;
+}
+exports.setApiUrl = setApiUrl;
 //# sourceMappingURL=index.js.map

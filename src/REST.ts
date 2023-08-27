@@ -36,6 +36,13 @@ export class REST {
         },
       });
     },
+    deleteUser: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/users/delete?id=" + id,
+        method: "DELETE",
+        token: token,
+      });
+    },
   };
 
   public static Account = {
