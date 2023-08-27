@@ -1,6 +1,6 @@
 {
   "name": "@saveworld/api-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "scripts": {
     "push": "tsc --project tsconfig.json && npm publish"
