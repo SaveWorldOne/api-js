@@ -1,6 +1,14 @@
 {
   "name": "@saveworld/api-js",
   "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "push": "tsc --project tsconfig.json && npm publish"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.ben-siebert.com"
+  },
   "dependencies": {
     "typescript": "^5.2.2"
   }
