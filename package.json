@@ -5,6 +5,11 @@
   "scripts": {
     "push": "tsc --project tsconfig.json && npm publish"
   },
+  "author": {
+    "name": "Ben Siebert",
+    "email": "hello@ben-siebert.de",
+    "url": "https://ben-siebert.com"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.ben-siebert.com"
