@@ -43,6 +43,23 @@ export class REST {
         token: token,
       });
     },
+    createCategory: async (
+      token: string,
+      name: string,
+      description: string,
+      image: string,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/content/categories",
+        method: "POST",
+        token: token,
+        body: {
+          name: name,
+          description: description,
+          image: image,
+        },
+      });
+    },
   };
 
   public static Account = {
@@ -113,6 +130,15 @@ export class REST {
         path: RESTEnv.API_URL + "/account/delete",
         method: "DELETE",
         token: token,
+      });
+    },
+  };
+
+  public static Content = {
+    categories: async () => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/content/categories",
+        method: "GET",
       });
     },
   };

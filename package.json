@@ -3,7 +3,11 @@
   "version": "1.0.6",
   "main": "dist/index.js",
   "scripts": {
-    "push": "tsc --project tsconfig.json && npm publish"
+    "build": "tsc --project tsconfig.json",
+    "build:docs": "typedoc --name \"SaveWorld REST API JS Client\" --out docs src/index.ts",
+    "npm:push": "npm publish",
+    "git:push": "git push origin main",
+    "pipeline": "git add . && git commit -m \"Auto pipeline commit\" && npm version patch && npm run build && npm run build:docs && npm run npm:push && npm run git:push"
   },
   "author": {
     "name": "Ben Siebert",
@@ -15,6 +19,7 @@
     "registry": "https://npm.ben-siebert.com"
   },
   "dependencies": {
+    "typedoc": "^0.25.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
