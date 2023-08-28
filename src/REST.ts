@@ -12,6 +12,10 @@ import { RESTEnv } from "./RESTEnv";
 
 export class REST {
   public static Admin = {
+    /**
+     * @return the stats of the system (user count, category count, ...)
+     * @param token used to authenticate
+     */
     stats: async (token: string) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/admin/stats",
@@ -19,6 +23,11 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * @return the requested user(s)
+     * @param token used to authenticate
+     * @param id of the user to get
+     */
     users: async (token: string, id?: string) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/admin/users" + (id ? "?id=" + id : ""),
@@ -26,6 +35,12 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Updates a user account
+     * @param token used to authenticate
+     * @param id of the user to update
+     * @param update the update object
+     */
     updateUser: async (token: string, id: string, update: any) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/admin/users/update?id=" + id,
@@ -36,6 +51,11 @@ export class REST {
         },
       });
     },
+    /**
+     * Deletes a user account
+     * @param token used to authenticate
+     * @param id of the user to delete
+     */
     deleteUser: async (token: string, id: string) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/admin/users/delete?id=" + id,
@@ -43,6 +63,13 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Creates a category
+     * @param token used to authenticate
+     * @param name of the category
+     * @param description of the category
+     * @param image of the category (url)
+     */
     createCategory: async (
       token: string,
       name: string,
@@ -63,6 +90,12 @@ export class REST {
   };
 
   public static Account = {
+    /**
+     * @return the requested jwt
+     * @param mail of the user
+     * @param password of the user
+     * @param totpCode of the user (optional, if enabled)
+     */
     login: async (mail: string, password: string, totpCode?: string) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/account/login",
@@ -74,6 +107,10 @@ export class REST {
         },
       });
     },
+    /**
+     * Creates a new user account
+     * @param options user data
+     */
     register: async (options: {
       mail: string;
       password: string;
@@ -93,6 +130,10 @@ export class REST {
         },
       });
     },
+    /**
+     * @return the requested user by jwt
+     * @param token used to authenticate
+     */
     verify: async (token: string) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/account/verify-token",
@@ -100,6 +141,11 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Updates a user account
+     * @param token used to authenticate
+     * @param options the update object
+     */
     update: async (
       token: string,
       options: {
@@ -125,6 +171,10 @@ export class REST {
         },
       });
     },
+    /**
+     * Deletes a user account
+     * @param token used to authenticate
+     */
     delete: async (token: string) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/account/delete",
@@ -135,6 +185,9 @@ export class REST {
   };
 
   public static Content = {
+    /**
+     * @return all categories
+     */
     categories: async () => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/content/categories",
