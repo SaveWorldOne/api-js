@@ -87,6 +87,18 @@ export class REST {
         },
       });
     },
+    /**
+     * Deletes a category
+     * @param token used to authenticate
+     * @param id of the category to delete
+     */
+    deleteCategory: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/content/categories?id=" + id,
+        method: "DELETE",
+        token: token,
+      });
+    },
   };
 
   public static Account = {
