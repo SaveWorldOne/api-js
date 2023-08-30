@@ -194,6 +194,31 @@ export class REST {
         token: token,
       });
     },
+    /** Returns the user preferences
+     * @param token used to authenticate
+     */
+    preferences: async (token: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/account/preferences",
+        method: "GET",
+        token: token,
+      });
+    },
+    /**
+     * Updates the user preferences
+     * @param token used to authenticate
+     * @param update the update object
+     */
+    updatePreferences: async (token: string, update: any) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/account/preferences",
+        method: "POST",
+        token: token,
+        body: {
+          update: update,
+        },
+      });
+    },
   };
 
   public static Content = {
