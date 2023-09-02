@@ -99,6 +99,34 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Upload a video
+     * @param token used to authenticate
+     * @param formData the form data
+     */
+    uploadVideo: async (token: string, formData: FormData) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/content/videos",
+        method: "POST",
+        token: token,
+        body: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    },
+    /**
+     * @return all videos
+     * @param token used to authenticate
+     * @param page the page to get
+     */
+    videos: async (token: string, page: number) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/content/videos/list?page=" + page,
+        method: "GET",
+        token,
+      });
+    },
   };
 
   public static Account = {
@@ -228,6 +256,15 @@ export class REST {
     categories: async () => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/content/categories",
+        method: "GET",
+      });
+    },
+    /**
+     * @return the metadata of the requested video
+     */
+    videoMetadata: async (s3id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/content/videos/" + s3id + "/metadata",
         method: "GET",
       });
     },
