@@ -106,7 +106,7 @@ export class REST {
      */
     uploadVideo: async (token: string, formData: FormData) => {
       return await makeRequest({
-        path: RESTEnv.API_URL + "/admin/content/videos",
+        path: RESTEnv.API_URL + "/admin/content/videos/create",
         method: "POST",
         token: token,
         body: formData,
