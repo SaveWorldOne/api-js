@@ -113,6 +113,7 @@ export class REST {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        rawBody: true,
       });
     },
     /**
