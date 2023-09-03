@@ -318,5 +318,17 @@ export class REST {
         },
       });
     },
+    /**
+     * @return the requested videos
+     * @param query the query to search for
+     * @param page the page to get
+     */
+    search: async (query: string, page: number) => {
+      return await makeRequest({
+        path:
+          RESTEnv.API_URL + "/content/videos/fts?q=" + query + "&page=" + page,
+        method: "GET",
+      });
+    },
   };
 }
