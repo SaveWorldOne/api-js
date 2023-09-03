@@ -24,7 +24,6 @@ export default async function makeRequest(options: {
     | "OPTIONS"
     | "CONNECT"
     | "TRACE";
-  rawBody?: boolean;
 }): Promise<IResponse> {
   const headers: { [key: string]: string } = {
     "Content-Type": "application/json",
@@ -42,19 +41,10 @@ export default async function makeRequest(options: {
     });
   }
 
-  let body = null;
-  if (options.body) {
-    if (options.rawBody) {
-      body = options.body;
-    } else {
-      body = JSON.stringify(options.body);
-    }
-  }
-
   const res = await fetch(options.path, {
     method: options.method,
     headers,
-    body: body,
+    body: options.body ? JSON.stringify(options.body) : null,
   });
 
   const payload = await res.json();

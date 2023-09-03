@@ -100,23 +100,6 @@ export class REST {
       });
     },
     /**
-     * Upload a video
-     * @param token used to authenticate
-     * @param formData the form data
-     */
-    uploadVideo: async (token: string, formData: FormData) => {
-      return await makeRequest({
-        path: RESTEnv.API_URL + "/admin/content/videos/create",
-        method: "POST",
-        token: token,
-        body: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        rawBody: true,
-      });
-    },
-    /**
      * @return all videos
      * @param token used to authenticate
      * @param page the page to get
@@ -126,6 +109,18 @@ export class REST {
         path: RESTEnv.API_URL + "/admin/content/videos/list?page=" + page,
         method: "GET",
         token,
+      });
+    },
+    /**
+     * Deletes a video
+     * @param token used to authenticate
+     * @param s3id of the video to delete
+     */
+    deleteVideo: async (token: string, s3id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/content/videos/delete?s3id=" + s3id,
+        method: "DELETE",
+        token: token,
       });
     },
   };
