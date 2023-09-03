@@ -290,5 +290,40 @@ export class REST {
         method: "GET",
       });
     },
+    /**
+     * @return the next suggested video
+     * @param token used to authenticate
+     */
+    nextVideo: async (token: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/content/videos/suggested",
+        method: "GET",
+        token: token,
+      });
+    },
+    /**
+     * Adds a video to watch history
+     * @param token used to authenticate
+     * @param videoId of the video
+     * @param time the time in seconds
+     * @param finished if the video is finished
+     */
+    addVideoToHistory: async (
+      token: string,
+      videoId: string,
+      time: number,
+      finished: boolean,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/content/videos/history",
+        method: "POST",
+        token: token,
+        body: {
+          videoId: videoId,
+          time: time,
+          finished: finished,
+        },
+      });
+    },
   };
 }
