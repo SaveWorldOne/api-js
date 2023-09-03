@@ -308,20 +308,13 @@ export class REST {
      * @param time the time in seconds
      * @param finished if the video is finished
      */
-    addVideoToHistory: async (
-      token: string,
-      videoId: string,
-      time: number,
-      finished: boolean,
-    ) => {
+    addVideoToHistory: async (token: string, videoId: string) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/content/videos/history",
         method: "POST",
         token: token,
         body: {
           videoId: videoId,
-          time: time,
-          finished: finished,
         },
       });
     },
