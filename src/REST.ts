@@ -123,6 +123,32 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Updates a video
+     * @param token used to authenticate
+     * @param id of the video to update
+     * @param title of the video
+     * @param description of the video
+     * @param categories of the video
+     */
+    updateVideo: async (
+      token: string,
+      id: string,
+      title: string,
+      description: string,
+      categories: string[],
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/content/videos/update?id=" + id,
+        method: "POST",
+        token: token,
+        body: {
+          title: title,
+          description: description,
+          categories: categories,
+        },
+      });
+    },
   };
 
   public static Account = {
