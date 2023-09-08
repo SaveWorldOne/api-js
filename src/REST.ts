@@ -114,11 +114,11 @@ export class REST {
     /**
      * Deletes a video
      * @param token used to authenticate
-     * @param s3id of the video to delete
+     * @param id of the video to delete
      */
-    deleteVideo: async (token: string, s3id: string) => {
+    deleteVideo: async (token: string, id: string) => {
       return await makeRequest({
-        path: RESTEnv.API_URL + "/admin/content/videos/delete?s3id=" + s3id,
+        path: RESTEnv.API_URL + "/admin/content/videos/delete?id=" + id,
         method: "DELETE",
         token: token,
       });
