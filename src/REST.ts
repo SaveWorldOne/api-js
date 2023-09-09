@@ -345,4 +345,81 @@ export class REST {
       });
     },
   };
+
+  public static Tracker = {
+    /**
+     * Creates a new eco action
+     * @param token used to authenticate
+     * @param action the action to create
+     * @param description the description of the action
+     * @param date the date of the action
+     */
+    createAction: async (
+      token: string,
+      action: string,
+      description: string,
+      date: string,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/tracker/createAction",
+        method: "POST",
+        token: token,
+        body: {
+          action: action,
+          description: description,
+          date: date,
+        },
+      });
+    },
+    /**
+     * Deletes an eco action
+     * @param token used to authenticate
+     * @param id of the action to delete
+     */
+    deleteAction: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/tracker/deleteAction?id=" + id,
+        method: "DELETE",
+        token: token,
+      });
+    },
+    /**
+     * Updates an eco action
+     * @param token used to authenticate
+     * @param id of the action to update
+     * @param action the action to create
+     * @param description the description of the action
+     * @param date the date of the action
+     */
+    updateAction: async (
+      token: string,
+      id: string,
+      action: string,
+      description: string,
+      date: string,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/tracker/updateAction?id=" + id,
+        method: "POST",
+        token: token,
+        body: {
+          action: action,
+          description: description,
+          date: date,
+        },
+      });
+    },
+    /**
+     * @return the requested eco actions
+     * @param token used to authenticate
+     * @param date the date to get
+     */
+    actions: async (token: string, date: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/tracker/actions?date=" + date,
+        method: "GET",
+        token: token,
+      });
+    },
+  };
 }
