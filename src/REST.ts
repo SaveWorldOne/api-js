@@ -330,5 +330,19 @@ export class REST {
         method: "GET",
       });
     },
+    /**
+     * Rates a video
+     * @param id of the video to get
+     * @param rating the rating to set
+     */
+    rate: async (id: string, rating: number) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/content/videos/" + id + "/rate",
+        method: "POST",
+        body: {
+          rating: rating,
+        },
+      });
+    },
   };
 }
