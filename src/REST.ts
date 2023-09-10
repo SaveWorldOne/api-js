@@ -421,5 +421,16 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * @return all dates with eco actions
+     * @param token used to authenticate
+     */
+    dates: async (token: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/tracker/dates",
+        method: "GET",
+        token: token,
+      });
+    },
   };
 }
