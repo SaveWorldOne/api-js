@@ -149,6 +149,62 @@ export class REST {
         },
       });
     },
+    /**
+     * Create a lifestyle template
+     * @param token used to authenticate
+     * @param name of the template
+     * @param goal of the template
+     */
+    createLifestyleTemplate: async (
+      token: string,
+      name: string,
+      goal: string,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/lifestyle/templates/add",
+        method: "POST",
+        token: token,
+        body: {
+          name: name,
+          goal: goal,
+        },
+      });
+    },
+    /**
+     * Deletes a lifestyle template
+     * @param token used to authenticate
+     * @param id of the template to delete
+     */
+    deleteLifestyleTemplate: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/lifestyle/templates/delete?id=" + id,
+        method: "DELETE",
+        token: token,
+      });
+    },
+    /**
+     * Updates a lifestyle template
+     * @param token used to authenticate
+     * @param id of the template to update
+     * @param name (new) of the template
+     * @param goal (new) of the template
+     */
+    updateLifestyleTemplate: async (
+      token: string,
+      id: string,
+      name: string,
+      goal: string,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/lifestyle/templates/update?id=" + id,
+        method: "POST",
+        token: token,
+        body: {
+          name: name,
+          goal: goal,
+        },
+      });
+    },
   };
 
   public static Account = {
@@ -430,6 +486,18 @@ export class REST {
         path: RESTEnv.API_URL + "/tracker/dates",
         method: "GET",
         token: token,
+      });
+    },
+  };
+
+  public static Lifestyle = {
+    /**
+     * @return all lifestyle templates
+     */
+    templates: async () => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/lifestyle/templates",
+        method: "GET",
       });
     },
   };
