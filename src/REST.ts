@@ -500,5 +500,33 @@ export class REST {
         method: "GET",
       });
     },
+    /**
+     * @return the lifestyle of the user
+     * @param token used to authenticate
+     */
+    my: async (token: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/lifestyle/my",
+        method: "GET",
+        token: token,
+      });
+    },
+    /**
+     * Updates the lifestyle of the user
+     * @param token used to authenticate
+     * @param actions the actions to set
+     * @param goals the goals to set
+     */
+    update: async (token: string, actions: any[], goals: any[]) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/lifestyle/my/update",
+        method: "POST",
+        token: token,
+        body: {
+          actions: actions,
+          goals: goals,
+        },
+      });
+    },
   };
 }
