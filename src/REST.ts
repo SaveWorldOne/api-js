@@ -528,5 +528,32 @@ export class REST {
         },
       });
     },
+    /**
+     * Submits a new lifestyle summary for the current day
+     * @param token used to authenticate
+     * @param goals the goals to set
+     */
+    submit: async (token: string, goals: any[]) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/lifestyle/my/submit",
+        method: "POST",
+        token: token,
+        body: {
+          goals: goals,
+        },
+      });
+    },
+    /**
+     * @return the lifestyle summary of the requested day
+     * @param token used to authenticate
+     * @param date the date to get
+     */
+    summary: async (token: string, date: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/lifestyle/my/" + date,
+        method: "GET",
+        token: token,
+      });
+    },
   };
 }
