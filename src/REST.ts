@@ -555,5 +555,16 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * @return the lifestyle summary of the current week
+     * @param token used to authenticate
+     */
+    weekly: async (token: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/lifestyle/my/weekly",
+        method: "GET",
+        token: token,
+      });
+    },
   };
 }
