@@ -558,10 +558,14 @@ export class REST {
     /**
      * @return the lifestyle summary of the current week
      * @param token used to authenticate
+     * @param dayInWeek some day in the week to get
      */
-    weekly: async (token: string) => {
+    weekly: async (token: string, dayInWeek?: string) => {
       return await makeRequest({
-        path: RESTEnv.API_URL + "/lifestyle/my/weekly",
+        path:
+          RESTEnv.API_URL +
+          "/lifestyle/my/weekly" +
+          (dayInWeek ? "?dayInWeek=" + dayInWeek : ""),
         method: "GET",
         token: token,
       });
