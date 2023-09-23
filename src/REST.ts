@@ -582,4 +582,19 @@ export class REST {
       });
     },
   };
+
+  public static Community = {
+    /**
+     * @return the requested user profile
+     * @param token used to authenticate
+     * @param username of the user to get
+     */
+    profile: async (token: string, username: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/profile/" + username,
+        method: "GET",
+        token: token,
+      });
+    },
+  };
 }
