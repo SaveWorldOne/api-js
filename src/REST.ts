@@ -596,5 +596,41 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Creates a new blog entry
+     * @param token used to authenticate
+     * @param title of the blog entry
+     * @param content of the blog entry
+     * @param tags of the blog entry
+     */
+    createBlogEntry: async (
+      token: string,
+      title: string,
+      content: string,
+      tags: string[],
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/blog/create",
+        method: "POST",
+        token: token,
+        body: {
+          title: title,
+          content: content,
+          tags: tags,
+        },
+      });
+    },
+    /**
+     * @return the requested blog entry
+     * @param token used to authenticate
+     * @param id of the blog entry to get
+     */
+    blogEntry: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/blog/receive?id=" + id,
+        method: "GET",
+        token: token,
+      });
+    },
   };
 }
