@@ -570,5 +570,16 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * @return the current lifestyle level based on the last period
+     * @param token used to authenticate
+     */
+    level: async (token: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/lifestyle/my/level",
+        method: "GET",
+        token: token,
+      });
+    },
   };
 }
