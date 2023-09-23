@@ -550,7 +550,7 @@ export class REST {
      */
     summary: async (token: string, date: string) => {
       return await makeRequest({
-        path: RESTEnv.API_URL + "/lifestyle/my/" + date,
+        path: RESTEnv.API_URL + "/lifestyle/my/day/" + date,
         method: "GET",
         token: token,
       });
