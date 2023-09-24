@@ -672,5 +672,23 @@ export class REST {
         },
       });
     },
+    /**
+     * @return the requested blog entries of the user
+     * @param token used to authenticate
+     * @param username of the user to get
+     * @param page the page to get
+     */
+    blogEntries: async (token: string, username: string, page: number) => {
+      return await makeRequest({
+        path:
+          RESTEnv.API_URL +
+          "/community/profile/" +
+          username +
+          "/blogs?page=" +
+          page,
+        method: "GET",
+        token: token,
+      });
+    },
   };
 }
