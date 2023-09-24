@@ -690,5 +690,17 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Toggle the follow of a user
+     * @param token used to authenticate
+     * @param username of the user to follow
+     */
+    follow: async (token: string, username: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/profile/" + username + "/follow",
+        method: "POST",
+        token: token,
+      });
+    },
   };
 }
