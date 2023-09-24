@@ -632,5 +632,45 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Toggles the like of a blog entry
+     * @param token used to authenticate
+     * @param id of the blog entry to like
+     */
+    likeBlogEntry: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/blog/like?id=" + id,
+        method: "POST",
+        token: token,
+      });
+    },
+    /**
+     * Deletes a blog entry
+     * @param token used to authenticate
+     * @param id of the blog entry to delete
+     */
+    deleteBlogEntry: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/blog/delete?id=" + id,
+        method: "DELETE",
+        token: token,
+      });
+    },
+    /**
+     * Creates a new comment
+     * @param token used to authenticate
+     * @param id of the blog entry to comment
+     * @param comment the comment to create
+     */
+    commentBlogEntry: async (token: string, id: string, comment: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/blog/comment?id=" + id,
+        method: "POST",
+        token: token,
+        body: {
+          comment: comment,
+        },
+      });
+    },
   };
 }
