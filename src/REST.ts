@@ -702,7 +702,6 @@ export class REST {
         token: token,
       });
     },
-
     /**
      * @return the requested blog entries of users the user follows
      * @param token used to authenticate
@@ -711,6 +710,18 @@ export class REST {
     followingBlogEntries: async (token: string, page: number) => {
       return await makeRequest({
         path: RESTEnv.API_URL + "/community/following?page=" + page,
+        method: "GET",
+        token: token,
+      });
+    },
+    /**
+     * @return the suggested blog entries
+     * @param token used to authenticate
+     * @param page the page to get
+     */
+    suggestedBlogEntries: async (token: string, page: number) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/community/suggested?page=" + page,
         method: "GET",
         token: token,
       });
