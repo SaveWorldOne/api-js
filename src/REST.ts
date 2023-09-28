@@ -726,5 +726,24 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * @return the requested search results
+     * @param token used to authenticate
+     * @param query the query to search for
+     * @param type the type to search for (posts, profiles)
+     */
+    search: async (token: string, query: string, type: string) => {
+      return await makeRequest({
+        path:
+          RESTEnv.API_URL +
+          "/community/search?q=" +
+          query +
+          "&type=" +
+          type +
+          "&page=0",
+        method: "GET",
+        token: token,
+      });
+    },
   };
 }
