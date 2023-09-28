@@ -731,8 +731,14 @@ export class REST {
      * @param token used to authenticate
      * @param query the query to search for
      * @param type the type to search for (posts, profiles)
+     * @param page the page to get
      */
-    search: async (token: string, query: string, type: string) => {
+    search: async (
+      token: string,
+      query: string,
+      type: string,
+      page: number,
+    ) => {
       return await makeRequest({
         path:
           RESTEnv.API_URL +
@@ -740,7 +746,8 @@ export class REST {
           query +
           "&type=" +
           type +
-          "&page=0",
+          "&page=" +
+          page,
         method: "GET",
         token: token,
       });
