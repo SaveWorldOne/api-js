@@ -767,5 +767,18 @@ export class REST {
         token: token,
       });
     },
+    /**
+     * Marks a notification as read
+     * @param token used to authenticate
+     * @param id of the notification to mark as read
+     * @return the updated notification
+     */
+    read: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/notifications/read?id=" + id,
+        method: "POST",
+        token: token,
+      });
+    },
   };
 }
