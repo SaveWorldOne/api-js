@@ -753,4 +753,19 @@ export class REST {
       });
     },
   };
+
+  public static Notifications = {
+    /**
+     * @return the requested notifications
+     * @param token used to authenticate
+     * @param page the page to get
+     */
+    notifications: async (token: string, page: number) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/notifications/my?page=" + page,
+        method: "GET",
+        token: token,
+      });
+    },
+  };
 }
