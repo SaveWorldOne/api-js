@@ -205,6 +205,50 @@ export class REST {
         },
       });
     },
+    /**
+     * @return the requested support requests
+     * @param token used to authenticate
+     * @param page the page to get
+     */
+    supportRequests: async (token: string, page: number) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/support/requests?page=" + page,
+        method: "GET",
+        token: token,
+      });
+    },
+    /**
+     * @return the requested support request
+     * @param token used to authenticate
+     * @param id of the request to get
+     */
+    supportRequest: async (token: string, id: string) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/support/request?id=" + id,
+        method: "GET",
+        token: token,
+      });
+    },
+    /**
+     * Updates a support request
+     * @param token used to authenticate
+     * @param id of the request to update
+     * @param message? the message to send to the user
+     */
+    processSupportRequest: async (
+      token: string,
+      id: string,
+      message?: string,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/admin/support/request?id=" + id,
+        method: "POST",
+        token: token,
+        body: {
+          message: message,
+        },
+      });
+    },
   };
 
   public static Account = {
