@@ -781,4 +781,31 @@ export class REST {
       });
     },
   };
+
+  public static Support = {
+    /**
+     * Submits a new support request
+     * @param email of the user
+     * @param category of the request
+     * @param message of the request
+     * @param additionalData of the request
+     */
+    submit: async (
+      email: string,
+      category: string,
+      message: string,
+      additionalData: string,
+    ) => {
+      return await makeRequest({
+        path: RESTEnv.API_URL + "/submit-support-request",
+        method: "POST",
+        body: {
+          email: email,
+          category: category,
+          message: message,
+          additionalData: additionalData,
+        },
+      });
+    },
+  };
 }
